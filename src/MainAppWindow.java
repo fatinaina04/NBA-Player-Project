@@ -45,7 +45,7 @@ public class MainAppWindow extends Application{
         
         ActiveRoster.setOnAction(e -> roster.openRoster(primaryStage));
         NBACities.setOnAction(e -> NBA.openNBACity(primaryStage));
-        InjuryReserve.setOnAction(e -> IR.openInjury(primaryStage));
+        InjuryReserve.setOnAction(e -> IR.openInjuryReserve(primaryStage));
         PerRanking.setOnAction(e -> ranking.openPerformanceRanking(primaryStage));
         ContractExtension.setOnAction(e -> contractextension.openContract(primaryStage));
         
@@ -65,4 +65,4 @@ public class MainAppWindow extends Application{
     }
     
     
-}}
+}
