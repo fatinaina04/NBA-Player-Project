@@ -13,10 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-/**
- *
- * @author edaotiro
- */
+
 public class MainAppWindow extends Application{
     private Stage primaryStage;
    
@@ -36,24 +33,27 @@ public class MainAppWindow extends Application{
         NBACity NBA = new NBACity();
         InjuryReserve IR = new InjuryReserve();
         PerformanceRanking ranking = new PerformanceRanking();
+        ContractExtensionQueue contractextension = new ContractExtensionQueue();
         
         Button ActiveRoster = new Button("Roster");
         Button NBACities = new Button("NBA Cities");
         Button InjuryReserve = new Button("Injury Reserve");
         Button PerRanking = new Button("Performance Ranking");
+        Button ContractExtension = new Button("Contract Extension");
         
         
         
         ActiveRoster.setOnAction(e -> roster.openRoster(primaryStage));
         NBACities.setOnAction(e -> NBA.openNBACity(primaryStage));
         InjuryReserve.setOnAction(e -> IR.openInjury(primaryStage));
-        PerRanking.setOnAction(e -> ranking.openRanking(primaryStage));
+        PerRanking.setOnAction(e -> ranking.openPerformanceRanking(primaryStage));
+        ContractExtension.setOnAction(e -> contractextension.openContract(primaryStage));
         
         // Set up the layout
         VBox layout = new VBox(10);
         layout.setPadding(new Insets(20, 20, 20, 20));
         layout.setAlignment(Pos.CENTER);
-        layout.getChildren().addAll(ActiveRoster,NBACities, InjuryReserve, PerRanking);
+        layout.getChildren().addAll(ActiveRoster,NBACities, InjuryReserve, PerRanking, ContractExtension);
         
         // Set up the scene
         Scene scene = new Scene(layout, 400, 400);
@@ -65,4 +65,4 @@ public class MainAppWindow extends Application{
     }
     
     
-}
+}}
