@@ -4,7 +4,7 @@
  */
 package nba2;
 
-iimport static javafx.application.Application.launch;
+import static javafx.application.Application.launch;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,9 +14,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-
+import javafx.stage.Modality;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,9 +43,6 @@ public class Roster extends Application {
         Button removeButton = new Button("Remove Player");
         removeButton.setOnAction(e -> openRemovePlayerDialog(primaryStage));
 
-        Button injuryButton = new Button("Injure Player");
-        injuryButton.setOnAction(e -> openInjurePlayerDialog(primaryStage));
-
         Button searchButton = new Button("Search Player");
         searchButton.setOnAction(e -> openSearchPlayerDialog(primaryStage));
 
@@ -54,7 +50,7 @@ public class Roster extends Application {
         rosterLayout.setAlignment(Pos.CENTER);
         rosterLayout.setPadding(new Insets(20, 20, 20, 20));
 
-        rosterLayout.getChildren().addAll(rosterTitle, addButton, removeButton, injuryButton, searchButton);
+        rosterLayout.getChildren().addAll(rosterTitle, addButton, removeButton, searchButton);
 
         Scene rosterScene = new Scene(rosterLayout, 300, 200);
         primaryStage.setScene(rosterScene);
@@ -63,74 +59,74 @@ public class Roster extends Application {
     }
 
     private void openAddPlayerDialog(Stage primaryStage) {
-    Stage addPlayerStage = new Stage();
-    addPlayerStage.initOwner(primaryStage);
-    addPlayerStage.initModality(Modality.APPLICATION_MODAL);
-    addPlayerStage.setTitle("Add Player");
+        Stage addPlayerStage = new Stage();
+        addPlayerStage.initOwner(primaryStage);
+        addPlayerStage.initModality(Modality.APPLICATION_MODAL);
+        addPlayerStage.setTitle("Add Player");
 
-    // Create UI components for adding a player
-    TextField nameField = new TextField();
-    TextField positionField = new TextField();
-    TextField ptsField = new TextField();
-    TextField rebField = new TextField();
-    TextField stlField = new TextField();
-    TextField astField = new TextField();
-    TextField blkField = new TextField();
-    TextField salaryField = new TextField();
-    TextField heightField = new TextField();
-    TextField weightField = new TextField();
+        // Create UI components for adding a player
+        TextField nameField = new TextField();
+        TextField positionField = new TextField();
+        TextField ptsField = new TextField();
+        TextField rebField = new TextField();
+        TextField stlField = new TextField();
+        TextField astField = new TextField();
+        TextField blkField = new TextField();
+        TextField salaryField = new TextField();
+        TextField heightField = new TextField();
+        TextField weightField = new TextField();
 
-    Label nameLabel = new Label("Name:");
-    Label positionLabel = new Label("Position:");
-    Label ptsLabel = new Label("Points:");
-    Label rebLabel = new Label("Rebounds:");
-    Label stlLabel = new Label("Steals:");
-    Label astLabel = new Label("Assists:");
-    Label blkLabel = new Label("Blocks:");
-    Label salaryLabel = new Label("Salary:");
-    Label heightLabel = new Label("Height:");
-    Label weightLabel = new Label("Weight:");
+        Label nameLabel = new Label("Name:");
+        Label positionLabel = new Label("Position:");
+        Label ptsLabel = new Label("Points:");
+        Label rebLabel = new Label("Rebounds:");
+        Label stlLabel = new Label("Steals:");
+        Label astLabel = new Label("Assists:");
+        Label blkLabel = new Label("Blocks:");
+        Label salaryLabel = new Label("Salary:");
+        Label heightLabel = new Label("Height:");
+        Label weightLabel = new Label("Weight:");
 
-    Button addButton = new Button("Add");
-    addButton.setOnAction(e -> {
-        String name = nameField.getText();
-        String position = positionField.getText();
-        double pts = Double.parseDouble(ptsField.getText());
-        double reb = Double.parseDouble(rebField.getText());
-        double stl = Double.parseDouble(stlField.getText());
-        double ast = Double.parseDouble(astField.getText());
-        double blk = Double.parseDouble(blkField.getText());
-        double salary = Double.parseDouble(salaryField.getText());
-        int height = Integer.parseInt(heightField.getText());
-        int weight = Integer.parseInt(weightField.getText());
-        Player player = new Player(name, position, pts, reb, stl, ast, blk, salary, height, weight);
-        activeRoster.add(player);
-        addPlayerStage.close();
-    });
+        Button addButton = new Button("Add");
+        addButton.setOnAction(e -> {
+            String name = nameField.getText();
+            String position = positionField.getText();
+            double pts = Double.parseDouble(ptsField.getText());
+            double reb = Double.parseDouble(rebField.getText());
+            double stl = Double.parseDouble(stlField.getText());
+            double ast = Double.parseDouble(astField.getText());
+            double blk = Double.parseDouble(blkField.getText());
+            double salary = Double.parseDouble(salaryField.getText());
+            int height = Integer.parseInt(heightField.getText());
+            int weight = Integer.parseInt(weightField.getText());
+            Player player = new Player(name, position, pts, reb, stl, ast, blk, salary, height, weight);
+            activeRoster.add(player);
+            addPlayerStage.close();
+        });
 
-    VBox addPlayerLayout = new VBox(10);
-    addPlayerLayout.setAlignment(Pos.CENTER);
-    addPlayerLayout.setPadding(new Insets(20, 20, 20, 20));
+        VBox addPlayerLayout = new VBox(10);
+        addPlayerLayout.setAlignment(Pos.CENTER);
+        addPlayerLayout.setPadding(new Insets(20, 20, 20, 20));
 
-    addPlayerLayout.getChildren().addAll(
-            nameLabel, nameField,
-            positionLabel, positionField,
-            ptsLabel, ptsField,
-            rebLabel, rebField,
-            stlLabel, stlField,
-            astLabel, astField,
-            blkLabel, blkField,
-            salaryLabel, salaryField,
-            heightLabel, heightField,
-            weightLabel, weightField,
-            addButton
-    );
+        addPlayerLayout.getChildren().addAll(
+                nameLabel, nameField,
+                positionLabel, positionField,
+                ptsLabel, ptsField,
+                rebLabel, rebField,
+                stlLabel, stlField,
+                astLabel, astField,
+                blkLabel, blkField,
+                salaryLabel, salaryField,
+                heightLabel, heightField,
+                weightLabel, weightField,
+                addButton
+        );
 
-    Scene addPlayerScene = new Scene(addPlayerLayout, 400, 900);
-    addPlayerStage.setScene(addPlayerScene);
+        Scene addPlayerScene = new Scene(addPlayerLayout, 400, 900);
+        addPlayerStage.setScene(addPlayerScene);
 
-    addPlayerStage.show();
-}
+        addPlayerStage.show();
+    }
 
 
     private void openRemovePlayerDialog(Stage primaryStage) {
@@ -159,34 +155,6 @@ public class Roster extends Application {
         removePlayerStage.setScene(removePlayerScene);
 
         removePlayerStage.show();
-    }
-
-    private void openInjurePlayerDialog(Stage primaryStage) {
-        Stage injurePlayerStage = new Stage();
-        injurePlayerStage.initOwner(primaryStage);
-        injurePlayerStage.initModality(Modality.APPLICATION_MODAL);
-        injurePlayerStage.setTitle("Injure Player");
-
-        // Create UI components for injuring a player
-        TextField nameField = new TextField();
-        Label nameLabel = new Label("Name:");
-        Button injureButton = new Button("Injure");
-        injureButton.setOnAction(e -> {
-            String name = nameField.getText();
-            team.addPlayerToInjuryReserve(name);
-            injurePlayerStage.close();
-        });
-
-        VBox injurePlayerLayout = new VBox(10);
-        injurePlayerLayout.setAlignment(Pos.CENTER);
-        injurePlayerLayout.setPadding(new Insets(20, 20, 20, 20));
-
-        injurePlayerLayout.getChildren().addAll(nameLabel, nameField, injureButton);
-
-        Scene injurePlayerScene = new Scene(injurePlayerLayout, 300, 150);
-        injurePlayerStage.setScene(injurePlayerScene);
-
-        injurePlayerStage.show();
     }
 
     private void openSearchPlayerDialog(Stage primaryStage) {
@@ -230,4 +198,3 @@ public class Roster extends Application {
         searchPlayerStage.show();
     }
 }
-
