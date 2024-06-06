@@ -186,17 +186,11 @@ public class NBACity extends Application {
         popupStage.initModality(Modality.APPLICATION_MODAL);
         popupStage.setTitle(title);
 
-        // Load the image
-        Image image = new Image("file:https://private-user-images.githubusercontent.com/153253153/335807137-6e0486ff-aafa-4444-aa3c-04e72c96203f.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTcyNTE4NDgsIm5iZiI6MTcxNzI1MTU0OCwicGF0aCI6Ii8xNTMyNTMxNTMvMzM1ODA3MTM3LTZlMDQ4NmZmLWFhZmEtNDQ0NC1hYTNjLTA0ZTcyYzk2MjAzZi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwNjAxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDYwMVQxNDE5MDhaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00Y2I1MmMzOGViZTNjZGVjNDZiMzJmODg1MmJjYWY5YzNlNDcwZjA2MzZjYThiMDJiZGEwY2IzYjlmYjYwZGE1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.poUrbm34vqsLZecF0pcGyufMr4hJSqYbJpaCPX-jCk0g"); // Update the path to your image file
-        ImageView imageView = new ImageView(image);
-        imageView.setFitWidth(300); // Set image width
-        imageView.setPreserveRatio(true); // Preserve the aspect ratio
-
         Text routeText = new Text(routeInfo.toString());
         VBox layout = new VBox(10);
         layout.setAlignment(Pos.CENTER);
         layout.setPadding(new Insets(20));
-        layout.getChildren().addAll(imageView, routeText);
+        layout.getChildren().addAll(routeText);
 
         Scene scene = new Scene(layout, 500, 600); // Increase the size of the popup
         scene.getRoot().setStyle("-fx-background-color: #FFF3B0;");
@@ -212,17 +206,11 @@ public class NBACity extends Application {
         popupStage.initModality(Modality.APPLICATION_MODAL);
         popupStage.setTitle(title);
 
-        // Load the image
-        Image image = new Image("file:https://private-user-images.githubusercontent.com/153253153/335807137-6e0486ff-aafa-4444-aa3c-04e72c96203f.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTcyNTE4NDgsIm5iZiI6MTcxNzI1MTU0OCwicGF0aCI6Ii8xNTMyNTMxNTMvMzM1ODA3MTM3LTZlMDQ4NmZmLWFhZmEtNDQ0NC1hYTNjLTA0ZTcyYzk2MjAzZi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwNjAxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDYwMVQxNDE5MDhaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00Y2I1MmMzOGViZTNjZGVjNDZiMzJmODg1MmJjYWY5YzNlNDcwZjA2MzZjYThiMDJiZGEwY2IzYjlmYjYwZGE1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.poUrbm34vqsLZecF0pcGyufMr4hJSqYbJpaCPX-jCk0"); // Update the path to your image file
-        ImageView imageView = new ImageView(image);
-        imageView.setFitWidth(300); // Set image width
-        imageView.setPreserveRatio(true); // Preserve the aspect ratio
-
         Text distanceText = new Text(distanceInfo);
         VBox layout = new VBox(10);
         layout.setAlignment(Pos.CENTER);
         layout.setPadding(new Insets(20));
-        layout.getChildren().addAll(imageView, distanceText);
+        layout.getChildren().addAll(distanceText);
 
         Scene scene = new Scene(layout, 500, 600); // Increase the size of the popup
         scene.getRoot().setStyle("-fx-background-color: #FFF3B0;");
