@@ -19,21 +19,21 @@ public class NBACity extends Application {
 
     // Adjacency matrix representing distances between cities
     private static final int[][] distances = {
-        {0, 1507, 2845, 500, 1901, 1137, 942, 678, 983, 500},
-        {1507, 0, 3045, 1507, 1901, 1137, 942, 678, 983, 500},
-        {2845, 3045, 0, 2584, 2845, 1137, 942, 678, 983, 500},
-        {500, 1507, 2584, 0, 1901, 1137, 942, 678, 983, 500},
-        {1901, 1901, 2845, 1901, 0, 1137, 942, 678, 983, 500},
-        {1137, 1137, 1137, 1137, 1137, 0, 942, 678, 983, 500},
-        {942, 942, 942, 942, 942, 942, 0, 678, 983, 500},
-        {678, 678, 678, 678, 678, 678, 678, 0, 983, 500},
-        {983, 983, 983, 983, 983, 983, 983, 983, 0, 500},
-        {500, 500, 500, 500, 500, 500, 500, 500, 500, 0}
+         {0, 0, 0, 0, 0, 500, 1137, 0, 678, 983},
+        {0, 0, 0, 0, 554, 0, 0, 1507, 2214, 0},
+        {0, 0, 0, 3045, 0, 0, 0, 2845, 0, 2584},
+        {0, 0, 3045, 0, 0, 0, 268, 0, 0, 0},
+        {0, 554, 0, 0, 0, 577, 0, 0, 2214, 0},
+        {500, 0, 0, 0, 577, 0, 0, 0, 0, 0},
+        {1137, 0, 0, 268, 0, 0, 0, 0, 0, 458},
+        {0, 1507, 2845, 0, 0, 0, 0, 0, 942, 0},
+        {678, 2214, 0, 0, 1901, 0, 0, 0, 0, 778},
+        {983, 0, 0, 0, 0, 0, 458, 0, 778, 0}
     };
 
     private static final String[] cities = {
-        "San Antonio", "Golden State", "Boston", "Phoenix", "Los Angeles",
-        "Orlando", "Denver", "Oklahoma City", "Houston", "Miami"
+        "San Antonio", "Golden State", "Boston", "Miami", "Los Angeles",
+        "Phoenix", "Orlando", "Denver", "Oklahoma City", "Houston"
     };
 
     private static final boolean[] visited = new boolean[10];
@@ -201,17 +201,17 @@ public class NBACity extends Application {
         gc.setStroke(Color.BLUE);
         gc.setLineWidth(2);
 
-        // Coordinates for the cities (for example purposes, should be scaled appropriately)
+        // Coordinates for the cities
         double[][] coordinates = {
-            {100, 300},  // San Antonio
+            {300, 450},  // San Antonio
             {50, 100},   // Golden State
             {700, 50},   // Boston
-            {300, 350},  // Phoenix
-            {200, 150},  // Los Angeles
+            {250, 350},  // Phoenix
+            {100, 300},  // Los Angeles
             {600, 400},  // Orlando
-            {400, 200},  // Denver
-            {500, 300},  // Oklahoma City
-            {300, 450},  // Houston
+            {400, 75},  // Denver
+            {300, 300},  // Oklahoma City
+            {500, 350},  // Houston
             {700, 500}   // Miami
         };
 
