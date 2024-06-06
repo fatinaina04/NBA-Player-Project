@@ -4,10 +4,11 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -17,23 +18,22 @@ import java.util.*;
 public class NBACity extends Application {
 
     // Adjacency matrix representing distances between cities
-    // Adjacency matrix representing distances between cities
     private static final int[][] distances = {
-            {0, 1507, 2845, 500, 1901, 1137, 942, 678, 983, 500},
-            {1507, 0, 3045, 1507, 1901, 1137, 942, 678, 983, 500},
-            {2845, 3045, 0, 2584, 2845, 1137, 942, 678, 983, 500},
-            {500, 1507, 2584, 0, 1901, 1137, 942, 678, 983, 500},
-            {1901, 1901, 2845, 1901, 0, 1137, 942, 678, 983, 500},
-            {1137, 1137, 1137, 1137, 1137, 0, 942, 678, 983, 500},
-            {942, 942, 942, 942, 942, 942, 0, 678, 983, 500},
-            {678, 678, 678, 678, 678, 678, 678, 0, 983, 500},
-            {983, 983, 983, 983, 983, 983, 983, 983, 0, 500},
-            {500, 500, 500, 500, 500, 500, 500, 500, 500, 0}
+        {0, 1507, 2845, 500, 1901, 1137, 942, 678, 983, 500},
+        {1507, 0, 3045, 0, 554, 0, 1507, 0, 0, 0},
+        {2845, 3045, 0, 2584, 0, 0, 0, 0, 0, 0},
+        {500, 0, 2584, 0, 0, 0, 0, 0, 0, 1901},
+        {1901, 554, 0, 0, 0, 577, 0, 0, 0, 0},
+        {1137, 0, 0, 0, 577, 0, 0, 0, 0, 0},
+        {942, 1507, 0, 0, 0, 0, 0, 678, 0, 0},
+        {678, 0, 0, 0, 0, 0, 678, 0, 0, 0},
+        {983, 0, 0, 0, 0, 0, 0, 0, 0, 500},
+        {500, 0, 0, 1901, 0, 0, 0, 0, 500, 0}
     };
 
     private static final String[] cities = {
-            "San Antonio", "Golden State", "Boston", "Phoenix", "Los Angeles",
-            "Orlando", "Denver", "Oklahoma City", "Houston", "Miami"
+        "San Antonio", "Golden State", "Boston", "Phoenix", "Los Angeles",
+        "Orlando", "Denver", "Oklahoma City", "Houston", "Miami"
     };
 
     private static final boolean[] visited = new boolean[10];
@@ -70,12 +70,13 @@ public class NBACity extends Application {
         Button btnBFS = new Button("Breadth First Search");
         Button btnDFS = new Button("Depth First Search");
         Button btnBestJourney = new Button("Overall Best Journey");
+        Button btnDigitalMap = new Button("Digital Map");
 
         // Set up the layout
         VBox cityLayout = new VBox(10);
         cityLayout.setAlignment(Pos.CENTER);
         cityLayout.setPadding(new Insets(20, 20, 20, 20));
-        cityLayout.getChildren().addAll(cityTitle, btnBFS, btnDFS, btnBestJourney);
+        cityLayout.getChildren().addAll(cityTitle, btnDigitalMap, btnBFS, btnDFS, btnBestJourney);
 
         // Set up the scene
         Scene cityScene = new Scene(cityLayout, 300, 200);
@@ -87,6 +88,7 @@ public class NBACity extends Application {
         btnBFS.setOnAction(e -> displayBFS(primaryStage));
         btnDFS.setOnAction(e -> displayDFS(primaryStage));
         btnBestJourney.setOnAction(e -> displayBestJourney(primaryStage));
+        btnDigitalMap.setOnAction(e -> displayDigitalMap(primaryStage));
 
         cityStage.show();
     }
@@ -172,6 +174,64 @@ public class NBACity extends Application {
         }
 
         return totalDistance;
+    }
+
+    private void displayDigitalMap(Stage owner) {
+        Stage mapStage = new Stage();
+        mapStage.initOwner(owner);
+        mapStage.initModality(Modality.APPLICATION_MODAL);
+        mapStage.setTitle("Digital Map");
+
+        Canvas canvas = new Canvas(800, 600);
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        drawMap(gc);
+
+        VBox layout = new VBox(10);
+        layout.setAlignment(Pos.CENTER);
+        layout.setPadding(new Insets(20));
+        layout.getChildren().add(canvas);
+
+        Scene scene = new Scene(layout, 800, 600);
+        mapStage.setScene(scene);
+        mapStage.show();
+    }
+
+    private void drawMap(GraphicsContext gc) {
+        gc.setFill(Color.BLACK);
+        gc.setStroke(Color.BLUE);
+        gc.setLineWidth(2);
+
+        // Coordinates for the cities (for example purposes, should be scaled appropriately)
+        double[][] coordinates = {
+            {100, 300},  // San Antonio
+            {50, 100},   // Golden State
+            {700, 50},   // Boston
+            {300, 350},  // Phoenix
+            {200, 150},  // Los Angeles
+            {600, 400},  // Orlando
+            {400, 200},  // Denver
+            {500, 300},  // Oklahoma City
+            {300, 450},  // Houston
+            {700, 500}   // Miami
+        };
+
+        // Draw cities
+        for (int i = 0; i < coordinates.length; i++) {
+            gc.fillOval(coordinates[i][0] - 5, coordinates[i][1] - 5, 10, 10);
+            gc.fillText(cities[i], coordinates[i][0] + 10, coordinates[i][1]);
+        }
+
+        // Draw edges
+        for (int i = 0; i < distances.length; i++) {
+            for (int j = 0; j < distances[i].length; j++) {
+                if (distances[i][j] > 0) {
+                    gc.strokeLine(coordinates[i][0], coordinates[i][1], coordinates[j][0], coordinates[j][1]);
+                    double midX = (coordinates[i][0] + coordinates[j][0]) / 2;
+                    double midY = (coordinates[i][1] + coordinates[j][1]) / 2;
+                    gc.fillText(distances[i][j] + " km", midX, midY);
+                }
+            }
+        }
     }
 
     private void showPopup(Stage owner, String title, List<Integer> route, int totalDistance) {
