@@ -184,7 +184,7 @@ public class NBACity extends Application {
 
         Canvas canvas = new Canvas(800, 600);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        drawMap(gc);
+        drawMap(gc, null);
 
         VBox layout = new VBox(10);
         layout.setAlignment(Pos.CENTER);
@@ -196,7 +196,7 @@ public class NBACity extends Application {
         mapStage.show();
     }
 
-    private void drawMap(GraphicsContext gc) {
+    private void drawMap(GraphicsContext gc, List<Integer> route) {
         gc.setFill(Color.BLACK);
         gc.setStroke(Color.BLUE);
         gc.setLineWidth(2);
@@ -206,13 +206,13 @@ public class NBACity extends Application {
             {300, 450},  // San Antonio
             {50, 100},   // Golden State
             {700, 50},   // Boston
-            {700, 500}   // Miami
+            {700, 500},  // Miami
             {100, 300},  // Los Angeles
             {250, 350},  // Phoenix
             {600, 400},  // Orlando
             {400, 75},  // Denver
             {300, 300},  // Oklahoma City
-            {500, 350},  // Houston
+            {500, 350}   // Houston
         };
 
         // Draw cities
@@ -221,14 +221,27 @@ public class NBACity extends Application {
             gc.fillText(cities[i], coordinates[i][0] + 10, coordinates[i][1]);
         }
 
-        // Draw edges
-        for (int i = 0; i < distances.length; i++) {
-            for (int j = 0; j < distances[i].length; j++) {
-                if (distances[i][j] > 0) {
-                    gc.strokeLine(coordinates[i][0], coordinates[i][1], coordinates[j][0], coordinates[j][1]);
-                    double midX = (coordinates[i][0] + coordinates[j][0]) / 2;
-                    double midY = (coordinates[i][1] + coordinates[j][1]) / 2;
-                    gc.fillText(distances[i][j] + " km", midX, midY);
+        // If a route is provided, draw only the route
+        if (route != null && !route.isEmpty()) {
+            gc.setStroke(Color.RED);
+            for (int i = 0; i < route.size() - 1; i++) {
+                int city1 = route.get(i);
+                int city2 = route.get(i + 1);
+                gc.strokeLine(coordinates[city1][0], coordinates[city1][1], coordinates[city2][0], coordinates[city2][1]);
+                double midX = (coordinates[city1][0] + coordinates[city2][0]) / 2;
+                double midY = (coordinates[city1][1] + coordinates[city2][1]) / 2;
+                gc.fillText(distances[city1][city2] + " km", midX, midY);
+            }
+        } else {
+            // Draw edges
+            for (int i = 0; i < distances.length; i++) {
+                for (int j = 0; j < distances[i].length; j++) {
+                    if (distances[i][j] > 0) {
+                        gc.strokeLine(coordinates[i][0], coordinates[i][1], coordinates[j][0], coordinates[j][1]);
+                        double midX = (coordinates[i][0] + coordinates[j][0]) / 2;
+                        double midY = (coordinates[i][1] + coordinates[j][1]) / 2;
+                        gc.fillText(distances[i][j] + " km", midX, midY);
+                    }
                 }
             }
         }
@@ -247,12 +260,17 @@ public class NBACity extends Application {
         popupStage.setTitle(title);
 
         Text routeText = new Text(routeInfo.toString());
+
+        Canvas canvas = new Canvas(800, 400);  // Adjust size as needed
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        drawMap(gc, route);
+
         VBox layout = new VBox(10);
         layout.setAlignment(Pos.CENTER);
         layout.setPadding(new Insets(20));
-        layout.getChildren().addAll(routeText);
+        layout.getChildren().addAll(canvas, routeText);
 
-        Scene scene = new Scene(layout, 500, 600); // Increase the size of the popup
+        Scene scene = new Scene(layout, 800, 600); // Adjust size as needed
         scene.getRoot().setStyle("-fx-background-color: #FFF3B0;");
         popupStage.setScene(scene);
         popupStage.show();
