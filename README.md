@@ -5,7 +5,7 @@ this .jar files need to be added into the classpath of your project.
 2. commons-lang3-3.14.0.jar
 3. opencsv-5.5.2.jar
 
-# SRC
+# SRC (nba2 file)
 1. # Api.java
    - the API key only valid until 19 June 2024
    - not sure if Api Class can run after that since we pay for upgrade.(free tier has too little request per minutes)
