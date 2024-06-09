@@ -1,0 +1,11 @@
+FirstName,LastName,Position,Points,Rebounds,Steals,Assists,Blocks,Salary,Height,Weight,Injured,InjuryDetails,ContractExtension
+Devin,Booker,G,27.074,4.529,0.912,6.941,0.412,3000.0,1.98,206,false, ,false
+Stephen,Curry,G,26.373,4.44,0.747,5.093,0.387,3000.0,1.88,185,false, ,false
+LeBron,James,F,25.603,7.37,1.288,8.247,0.548,3000.0,2.06,250,false, ,false
+Myles,Turner,C,16.962,6.923,0.513,1.295,1.821,1200.0,2.11,250,false, ,false
+Terry,Rozier,G,19.754,4.049,1.049,5.607,0.344,1300.0,1.85,190,false, ,false
+James,Harden,G,16.556,5.125,1.069,8.528,0.778,1000.0,1.96,220,false, ,false
+Aaron,Gordon,F,13.877,6.411,0.781,3.548,0.616,1000.0,2.03,235,false, ,false
+Jayson,Tatum,F,26.838,8.149,1.014,4.919,0.581,3000.0,2.03,210,false, ,false
+Collin,Sexton,G,18.692,2.628,0.795,4.91,0.231,2000.0,1.91,190,false, ,false
+Tobias,Harris,F,17.085,6.507,0.986,3.099,0.648,1000.0,2.03,226,false, ,false
