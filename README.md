@@ -21,7 +21,10 @@ this .jar files need to be added into the classpath of your project.
 6. InjuryReserve.java
    -  
 7. ContractExtensionQueue.java
-   -  
+   -  allows the user to either add or remove players to contract extension queue by entering their first and last name
+   -  if the entered name is not  in the roster, user is not able to add or remove player in the contract extension queue
+   -  added player's name will be displayed in a list and the 'Contract Extension' column in 'roster.csv' will change status to true
+   -  removed player's name will be removed from the list displayed and the 'Contract Extension' column in 'roster.csv' will change status to false
 8. NBACity.java
    - displaying the digital map of cities around USA that is involved in the NBA games including their distances from each other
    - calculating the shortest distance and extract the shortest path using BFS and DFS algorithm
