@@ -23,7 +23,10 @@ this .jar files need to be added into the classpath of your project.
 7. ContractExtensionQueue.java
    -  
 8. NBACity.java
-   -
+   - displaying the digital map of cities around USA that is involved in the NBA games including their distances from each other
+   - calculating the shortest distance and extract the shortest path using BFS and DFS algorithm
+   - presenting the overall best journey that could be offered for the Spurs to travel to each city exactly once
+   - another digital map of the journey of the shortest path will be displayed along with the algorithms and overall best button
    
 # CSV FILES:
 1. players.csv :
