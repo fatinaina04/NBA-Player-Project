@@ -1,4 +1,9 @@
 # NBA-Player-Project
+# .jar FILES:
+this .jar files need to be added into the classpath of your project.
+1. org.json.jar
+2. commons-lang3-3.14.0.jar
+3. opencsv-5.5.2.jar
 
 # SRC
 1. # Api.java
