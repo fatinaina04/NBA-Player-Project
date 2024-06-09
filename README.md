@@ -1,7 +1,7 @@
 # NBA-Player-Project
 
 # SRC
-# 1. Api.java
+1. # Api.java
    - the API key only valid until 19 June 2024
    - not sure if Api Class can run after that since we pay for upgrade.(free tier has too little request per minutes)
    - took some times to process (10-15 mins) when you run the Api Class
