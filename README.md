@@ -16,6 +16,9 @@ this .jar files need to be added into the classpath of your project.
    - 
 4. Roster.java
    - 
+   - Fetches data from players.csv file (this file is needed in order to run roster class)
+   - Must run Api.java first to successfully run roster.java
+   - Creates roster.csv upon completion of roster validation
 5. PerformanceRanking.java
    - 
 6. InjuryReserve.java
